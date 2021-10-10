@@ -1,0 +1,87 @@
+//you can destructure the props if you don't want to use props
+// function Book({ img, title, author,children }) {
+//   console.log(props);
+//   return (
+//     <article className="book">
+//       <img src={img} alt="pics" className="image" />
+//       <h2>{title}</h2>
+//       <h4>{author}</h4>
+//       {children}
+//     </article>
+//   );
+// }
+
+function Book(props) {
+  const clickHandler = () => {
+    console.log("reference link is clicked");
+  };
+
+  const complexExample = (author) => {
+    console.log(author);
+  };
+  return (
+    <article
+      className="book"
+      // onMouseOver={() => {
+      //   console.log(props.title);
+      // }}
+    >
+      <img src={props.img} alt="pics" className="image" />
+      <h2>{props.title}</h2>
+      <h4>{props.author}</h4>
+      {/* using event basics in jsx */}
+      {/* buttons with external references */}
+      <button type="button" onClick={clickHandler}>
+        Reference click
+      </button>
+      &nbsp;&nbsp;&nbsp;
+      {/* buttons with inline references
+      <button
+        type="button"
+        onClick={() => {
+          console.log("inline click");
+        }}
+      >
+        Inline click
+      </button> */}
+      {/* how many times I click button this function will called rather in above
+      example it was calling it only once I clicked several times on
+      same/another button */}
+      <button type="button" onClick={() => complexExample(props.author)}>
+        Function not invoked
+      </button>
+    </article>
+  );
+}
+
+/ function Booklist() {
+//   return (
+//     <section className="booklist">
+//       <Book
+//         img={firstbook.img}
+//         title={firstbook.title}
+//         author={firstbook.author}
+//       >
+//         <p className="desc">
+//           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam quia,
+//           maiores omnis maxime aperiam aut dolorum impedit deserunt
+//           reprehenderit dolorem!
+//         </p>
+//       </Book>
+//       {/* the above code shows how props children works */}
+//       <Book
+//         img={secondbook.img}
+//         title={secondbook.title}
+//         author={secondbook.author}
+//       />
+//     </section>
+//   );
+// }
+
+
+//how to use list by using map function
+// const names = ["john", "fred", "tiya"];
+// const namelist = names.map(function (name) {
+//   return <h1>{name}</h1>;
+// });
+// console.log(namelist);
